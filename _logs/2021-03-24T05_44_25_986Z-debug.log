@@ -1,0 +1,56 @@
+0 verbose cli [
+0 verbose cli   'C:\\Program Files\\nodejs\\node.exe',
+0 verbose cli   'C:\\Users\\Amol\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+0 verbose cli   'view',
+0 verbose cli   '--json',
+0 verbose cli   'express',
+0 verbose cli   'description',
+0 verbose cli   'dist-tags.latest',
+0 verbose cli   'homepage',
+0 verbose cli   'version'
+0 verbose cli ]
+1 info using npm@7.5.3
+2 info using node@v14.15.3
+3 timing config:load:defaults Completed in 3ms
+4 timing config:load:file:C:\Users\Amol\AppData\Roaming\npm\node_modules\npm\npmrc Completed in 1ms
+5 timing config:load:builtin Completed in 1ms
+6 timing config:load:cli Completed in 4ms
+7 timing config:load:env Completed in 1ms
+8 timing config:load:file:e:\BSC CS\Full Stack JavaScript\ToDoList\.npmrc Completed in 0ms
+9 timing config:load:project Completed in 12ms
+10 timing config:load:file:C:\Users\Amol\.npmrc Completed in 3ms
+11 timing config:load:user Completed in 3ms
+12 timing config:load:file:C:\Program Files\nodejs\etc\npmrc Completed in 0ms
+13 timing config:load:global Completed in 0ms
+14 timing config:load:cafile Completed in 1ms
+15 timing config:load:validate Completed in 1ms
+16 timing config:load:setUserAgent Completed in 1ms
+17 timing config:load:setEnvs Completed in 1ms
+18 timing config:load Completed in 28ms
+19 verbose npm-session b4712786ef00b2fd
+20 timing npm:load Completed in 82ms
+21 timing command:view Completed in 624ms
+22 verbose type system
+23 verbose stack FetchError: request to https://registry.npmjs.org/express failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org
+23 verbose stack     at ClientRequest.<anonymous> (C:\Users\Amol\AppData\Roaming\npm\node_modules\npm\node_modules\minipass-fetch\lib\index.js:97:14)
+23 verbose stack     at ClientRequest.emit (events.js:315:20)
+23 verbose stack     at TLSSocket.socketErrorListener (_http_client.js:469:9)
+23 verbose stack     at TLSSocket.emit (events.js:327:22)
+23 verbose stack     at emitErrorNT (internal/streams/destroy.js:106:8)
+23 verbose stack     at emitErrorCloseNT (internal/streams/destroy.js:74:3)
+23 verbose stack     at processTicksAndRejections (internal/process/task_queues.js:80:21)
+24 verbose cwd e:\BSC CS\Full Stack JavaScript\ToDoList
+25 verbose Windows_NT 10.0.19041
+26 verbose argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\Amol\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "view" "--json" "express" "description" "dist-tags.latest" "homepage" "version"
+27 verbose node v14.15.3
+28 verbose npm  v7.5.3
+29 error code ENOTFOUND
+30 error syscall getaddrinfo
+31 error errno ENOTFOUND
+32 error network request to https://registry.npmjs.org/express failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org
+33 error network This is a problem related to network connectivity.
+33 error network In most cases you are behind a proxy or have bad network settings.
+33 error network
+33 error network If you are behind a proxy, please make sure that the
+33 error network 'proxy' config is set properly.  See: 'npm help config'
+34 verbose exit 1
