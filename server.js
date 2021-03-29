@@ -1,3 +1,5 @@
+// import dotenv
+const dotenv=require("dotenv").config()
 // import Express module
 let express=require("express")
 // import MongoDB module
@@ -14,7 +16,8 @@ if(port == null || port == ""){
 //by Setting port number rum "git init" command in CMD to prepare git to send our files to heroku
 //To establishing the connection between node.js and MongoDB  in line 12
 let dataBase
-let conncetionString="mongodb+srv://todoAppUser:T0SHiJD3WCtUKKx1@cluster0.nxkw7.mongodb.net/ToDoList?retryWrites=true&w=majority"
+
+let conncetionString=process.env.CONNECTIONSTRING
 //Connect method have 3 arguments 1st-connection string, 3rd arg-call back fun that call after connection with db get established
 mongoDB.connect(conncetionString,{useNewUrlParser:true,useUnifiedTopology: true},(err,client)=>{
   dataBase=client.db()  //To access Database we giverefrense to dataBase variable
