@@ -1,3 +1,6 @@
+// import multer to upload file
+const multer= require("multer")
+
 // import dotenv
 const dotenv=require("dotenv").config()
 // import Express module
@@ -6,6 +9,8 @@ let express=require("express")
 let mongoDB=require("mongodb")
 // create Server by6 using Express package 
 let server=express()
+
+
 // to serve static file in express 
 server.use(express.static("public"))
 //To get axact port number that heroku enviroment want
@@ -32,8 +37,7 @@ server.get("/",(req,res)=>{
   // as soon as server get req,first thing server tries to make connection with mongodb
   // after getting connected with mongodb ,server res to browser by sending html
   dataBase.collection("items").find().toArray((err,items)=>{
-    res.send(`
-    <!DOCTYPE html>
+    res.send(`<!DOCTYPE html>
     <html>
     <head>
       <meta charset="UTF-8">
@@ -49,6 +53,8 @@ server.get("/",(req,res)=>{
           <form id="create-form" action="/create-item" method="POST">
             <div class="d-flex align-items-center">
               <input id="create-field" name="item" autofocus autocomplete="off" class="form-control mr-3" type="text" style="flex: 1;">
+             
+
               <button class="btn btn-primary">Add New Item</button>
             </div>
           </form> 
@@ -65,8 +71,7 @@ server.get("/",(req,res)=>{
       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 
       <script src="/browser.js"></script>
     </body>
-    </html>
-    `)
+    </html>`)
   })
     
 })
@@ -79,7 +84,11 @@ server.post("/create-item",(req,res)=>{
   // 1st argu- requested data that send from browser 
   // 2nd argu- callback fun that call by insertOne method after requested data stored successfully into mongoDb
   // after data stored in mongodb successfully callback function return json object data as response to browser 
-  dataBase.collection("items").insertOne({text: req.body.text},(err,info)=> res.json(info.ops[0]))
+  
+    dataBase.collection("items").insert({text: req.body.text,date: new Date().toLocaleString()},(err,info)=> res.json(info.ops[0]))
+  
+  
+  
   
 })
 // After getting post req from browser to server to update data in mongodb
@@ -87,7 +96,7 @@ server.post("/create-item",(req,res)=>{
 server.post("/update-item",(req,res)=>{
   // console.log(req.body.newV) // we log data in node.js env that send from browser enviroment
   // Here,Below node.js tries to update data in mongodb and send "success" msg as response  to browser
-  dataBase.collection("items").findOneAndUpdate({_id : new mongoDB.ObjectId(req.body.id)},{$set : {text:req.body.newV}},()=>{
+  dataBase.collection("items").update({_id : new mongoDB.ObjectId(req.body.id)},{$set : {text:req.body.newV}, $setOnInsert: { date: new Date() }},()=>{
     res.send("Success")
   })
 })

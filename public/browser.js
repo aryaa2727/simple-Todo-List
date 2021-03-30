@@ -1,7 +1,13 @@
+
 // Html list element stored in function
 let itemTemplate=(item)=>{
     return ` <li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+    <div class="d-flex flex-column">
     <span class="item-text">${item.text}</span>
+    <small class="item-muted">${item.date}</small>
+    </div>
+    
+
     <div>
       <button data-id=${item._id} class="edit-me btn btn-secondary btn-sm mr-1">Edit</button>
       <button data-id=${item._id} class="delete-me btn btn-danger btn-sm">Delete</button>
@@ -24,6 +30,11 @@ let createInput=document.getElementById("create-field")
 // axios send reg from browser to server
 document.getElementById("create-form").addEventListener("submit",(e)=>{
     e.preventDefault()
+    if(e.target.item.value == ""){
+        confirm("Please enter value")
+    }
+    let nowDate=new Date().toString()
+    if(!e.target.item.value == ""){
     axios.post("/create-item",{text: createInput.value}).then((response)=>{
         //after data stored in db ,this data render on screeen
         document.getElementById("item-list").insertAdjacentHTML("beforeend",itemTemplate(response.data))
@@ -31,6 +42,7 @@ document.getElementById("create-form").addEventListener("submit",(e)=>{
         createInput.focus()
     }).catch(()=>{
         console.log("please ")})
+    }
 })
 
 
